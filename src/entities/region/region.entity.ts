@@ -1,5 +1,6 @@
 import { BaseEntity } from 'src/core/database/typeorm/base.entity';
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
+import { Country } from '../country/country.entity';
 
 @Entity('regions')
 export class Region extends BaseEntity {
@@ -8,4 +9,7 @@ export class Region extends BaseEntity {
 
   @Column({ type: 'varchar', length: 25, nullable: true })
   regionName: string;
+
+  @OneToMany(() => Country, (country) => country.region)
+  Countries: Country[];
 }
