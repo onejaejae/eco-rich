@@ -10,6 +10,6 @@ export class Region extends BaseTimeEntity {
   @Column({ type: 'varchar', length: 25, nullable: true })
   regionName: string;
 
-  @OneToMany(() => Country, (country) => country.region)
+  @OneToMany(() => Country, (country) => country.Region)
   Countries: Country[];
 }
