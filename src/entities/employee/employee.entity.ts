@@ -7,6 +7,7 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 import { Department } from '../department/department.entity';
+import { JobHistory } from '../job-history/job-history.entity';
 
 @Entity('employees')
 export class Employee {
@@ -48,6 +49,9 @@ export class Employee {
 
   @OneToMany(() => Department, (department) => department.Manager)
   ManagedDepartments: Department[];
+
+  @OneToMany(() => JobHistory, (jobHistory) => jobHistory.Employee)
+  JobHistories: JobHistory[];
 
   @ManyToOne(() => Department, (department) => department.Employees)
   @JoinColumn([{ name: 'department_id', referencedColumnName: 'departmentId' }])

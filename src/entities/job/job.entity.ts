@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
+import { JobHistory } from '../job-history/job-history.entity';
 
 @Entity('jobs')
 export class Job {
@@ -25,4 +26,7 @@ export class Job {
     nullable: true,
   })
   maxSalary: number;
+
+  @OneToMany(() => JobHistory, (jobHistory) => jobHistory.Job)
+  JobHistories: JobHistory[];
 }

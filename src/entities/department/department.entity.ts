@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Location } from '../location/location.entity';
 import { Employee } from '../employee/employee.entity';
+import { JobHistory } from '../job-history/job-history.entity';
 
 @Entity('departments')
 export class Department {
@@ -25,6 +26,9 @@ export class Department {
 
   @OneToMany(() => Employee, (employee) => employee.Department)
   Employees: Employee[];
+
+  @OneToMany(() => JobHistory, (jobHistory) => jobHistory.Employee)
+  JobHistories: JobHistory[];
 
   @ManyToOne(() => Location, (location) => location.Departments)
   @JoinColumn([{ name: 'location_id', referencedColumnName: 'locationId' }])
