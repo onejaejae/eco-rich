@@ -8,6 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Country } from '../country/country.entity';
+import { Department } from '../department/department.entity';
 
 @Entity('locations')
 export class Location extends BaseTimeEntity {
@@ -28,6 +29,9 @@ export class Location extends BaseTimeEntity {
 
   @Column({ type: 'varchar', length: 2 })
   countryId: string;
+
+  @OneToMany(() => Department, (department) => department.Location)
+  Departments: Department[];
 
   @ManyToOne(() => Country, (country) => country.Locations)
   @JoinColumn([{ name: 'country_id', referencedColumnName: 'countryId' }])
