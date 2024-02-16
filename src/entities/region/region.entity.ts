@@ -1,9 +1,9 @@
-import { BaseEntity } from 'src/core/database/typeorm/base.entity';
+import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
 import { Country } from '../country/country.entity';
 
 @Entity('regions')
-export class Region extends BaseEntity {
+export class Region extends BaseTimeEntity {
   @PrimaryColumn({ type: 'int', unsigned: true })
   regionId: number;
 
