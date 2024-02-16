@@ -21,7 +21,7 @@ export class TypeOrmModule {
           database: dbConfig.DB_DATABASE,
           username: dbConfig.DB_USER_NAME,
           password: dbConfig.DB_PASSWORD,
-          synchronize: process.env.NODE_ENV === 'dev',
+          synchronize: false,
           entities: [entityPath],
           logging: true,
           namingStrategy: new SnakeNamingStrategy(),
