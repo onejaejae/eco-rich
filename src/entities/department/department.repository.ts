@@ -2,15 +2,15 @@ import { EntityTarget } from 'typeorm';
 import { GenericTypeOrmRepository } from 'src/core/database/typeorm/generic-typeorm.repository';
 import { Injectable } from '@nestjs/common';
 import { TransactionManager } from 'src/core/database/typeorm/transaction.manager';
-import { Country } from './country.entity';
+import { Department } from './department.entity';
 
 @Injectable()
-export class CountryRepository extends GenericTypeOrmRepository<Country> {
+export class DepartmentRepository extends GenericTypeOrmRepository<Department> {
   constructor(protected readonly txManager: TransactionManager) {
-    super(Country);
+    super(Department);
   }
 
-  getName(): EntityTarget<Country> {
-    return Country.name;
+  getName(): EntityTarget<Department> {
+    return Department.name;
   }
 }
