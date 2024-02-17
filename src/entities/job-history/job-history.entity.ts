@@ -10,6 +10,7 @@ import { Employee } from '../employee/employee.entity';
 import { Department } from '../department/department.entity';
 import { Job } from '../job/job.entity';
 import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
+import { Type } from 'class-transformer';
 
 @Entity('job_history')
 @Index(['employeeId', 'startDate'], { unique: true })
@@ -39,11 +40,19 @@ export class JobHistory extends BaseTimeEntity {
     onDelete: 'CASCADE',
   })
   @JoinColumn([{ name: 'department_id', referencedColumnName: 'departmentId' }])
-  department: Department;
+  Department: Department;
 
   @ManyToOne(() => Job, (job) => job.JobHistories, {
     onDelete: 'CASCADE',
   })
   @JoinColumn([{ name: 'job_id', referencedColumnName: 'jobId' }])
+  Job: Job;
+}
+
+export class JobHistoryWithJobAndDepartment extends JobHistory {
+  @Type(() => Department)
+  Department: Department;
+
+  @Type(() => Job)
   Job: Job;
 }

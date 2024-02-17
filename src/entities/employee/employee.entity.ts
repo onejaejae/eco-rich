@@ -7,7 +7,10 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 import { Department } from '../department/department.entity';
-import { JobHistory } from '../job-history/job-history.entity';
+import {
+  JobHistory,
+  JobHistoryWithJobAndDepartment,
+} from '../job-history/job-history.entity';
 import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 import { Job } from '../job/job.entity';
 import { Type } from 'class-transformer';
@@ -84,4 +87,9 @@ export class GetEmployee extends Employee {
 
   @Type(() => Employee)
   Manager: Employee;
+}
+
+export class GetEmployeeJobHistory extends Employee {
+  @Type(() => JobHistoryWithJobAndDepartment)
+  JobHistories: JobHistoryWithJobAndDepartment[];
 }

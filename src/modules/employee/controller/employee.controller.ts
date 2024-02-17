@@ -1,6 +1,9 @@
 import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { EmployeeService } from '../service/employee.service';
-import { GetEmployee } from 'src/entities/employee/employee.entity';
+import {
+  GetEmployee,
+  GetEmployeeJobHistory,
+} from 'src/entities/employee/employee.entity';
 
 @Controller('employees')
 export class EmployeeController {
@@ -11,5 +14,12 @@ export class EmployeeController {
     @Param('employeeId') employeeId: number,
   ): Promise<GetEmployee> {
     return this.employeeService.getEmployee(employeeId);
+  }
+
+  @Get('/:employeeId/job-history')
+  async getEmployeeJobHistory(
+    @Param('employeeId') employeeId: number,
+  ): Promise<GetEmployeeJobHistory> {
+    return this.employeeService.getEmployeeJobHistory(employeeId);
   }
 }
