@@ -8,9 +8,10 @@ import {
 } from 'typeorm';
 import { Department } from '../department/department.entity';
 import { JobHistory } from '../job-history/job-history.entity';
+import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 
 @Entity('employees')
-export class Employee {
+export class Employee extends BaseTimeEntity {
   @PrimaryColumn({ type: 'int', unsigned: true })
   employeeId: number;
 

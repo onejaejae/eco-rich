@@ -9,10 +9,11 @@ import {
 import { Employee } from '../employee/employee.entity';
 import { Department } from '../department/department.entity';
 import { Job } from '../job/job.entity';
+import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 
 @Entity('job_history')
 @Index(['employeeId', 'startDate'], { unique: true })
-export class JobHistory {
+export class JobHistory extends BaseTimeEntity {
   @PrimaryColumn({ type: 'int', unsigned: true })
   employeeId: number;
 

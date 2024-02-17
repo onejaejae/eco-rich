@@ -12,13 +12,13 @@ import { Department } from '../department/department.entity';
 
 @Entity('locations')
 export class Location extends BaseTimeEntity {
-  @PrimaryColumn({ type: 'int', unsigned: true, generated: 'increment' })
+  @PrimaryColumn({ type: 'int', unsigned: true })
   locationId: number;
 
   @Column({ type: 'varchar', length: 40 })
   streetAddress: string;
 
-  @Column({ type: 'varchar', length: 12 })
+  @Column({ type: 'varchar', length: 12, nullable: true })
   postalCode: string;
 
   @Column({ type: 'varchar', length: 30 })

@@ -9,9 +9,10 @@ import {
 import { Location } from '../location/location.entity';
 import { Employee } from '../employee/employee.entity';
 import { JobHistory } from '../job-history/job-history.entity';
+import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 
 @Entity('departments')
-export class Department {
+export class Department extends BaseTimeEntity {
   @PrimaryColumn({ type: 'int', unsigned: true })
   departmentId: number;
 

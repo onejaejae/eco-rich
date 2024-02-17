@@ -1,8 +1,9 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
 import { JobHistory } from '../job-history/job-history.entity';
+import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 
 @Entity('jobs')
-export class Job {
+export class Job extends BaseTimeEntity {
   @PrimaryColumn({ type: 'varchar', length: 10 })
   jobId: string;
 
