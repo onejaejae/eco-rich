@@ -1,6 +1,7 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
 import { JobHistory } from '../job-history/job-history.entity';
 import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
+import { Employee } from '../employee/employee.entity';
 
 @Entity('jobs')
 export class Job extends BaseTimeEntity {
@@ -27,6 +28,9 @@ export class Job extends BaseTimeEntity {
     nullable: true,
   })
   maxSalary: number;
+
+  @OneToMany(() => Employee, (employee) => employee.Job)
+  Employees: Employee[];
 
   @OneToMany(() => JobHistory, (jobHistory) => jobHistory.Job)
   JobHistories: JobHistory[];

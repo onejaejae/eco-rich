@@ -26,16 +26,6 @@ export abstract class GenericTypeOrmRepository<T extends RootEntity> {
     return plainToInstance(this.classType, res);
   }
 
-  async findByIdOrThrow(id: number): Promise<T> {
-    const findOption: FindOneOptions = { where: { id } };
-    const res = await this.getRepository().findOne(findOption);
-
-    if (!res) {
-      throw new BadRequestException(`don't exist ${id}`);
-    }
-    return plainToInstance(this.classType, res);
-  }
-
   async update(models: T): Promise<T> {
     const res = await this.getRepository().save(models);
 

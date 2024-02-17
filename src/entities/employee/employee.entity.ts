@@ -9,6 +9,8 @@ import {
 import { Department } from '../department/department.entity';
 import { JobHistory } from '../job-history/job-history.entity';
 import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
+import { Job } from '../job/job.entity';
+import { Type } from 'class-transformer';
 
 @Entity('employees')
 export class Employee extends BaseTimeEntity {
@@ -54,11 +56,32 @@ export class Employee extends BaseTimeEntity {
   @OneToMany(() => JobHistory, (jobHistory) => jobHistory.Employee)
   JobHistories: JobHistory[];
 
+  @ManyToOne(() => Job, (job) => job.Employees)
+  @JoinColumn([{ name: 'job_id', referencedColumnName: 'jobId' }])
+  Job: Job;
+
   @ManyToOne(() => Department, (department) => department.Employees)
   @JoinColumn([{ name: 'department_id', referencedColumnName: 'departmentId' }])
   Department: Department;
 
   @ManyToOne(() => Employee, (manager) => manager.ManagedEmployees)
   @JoinColumn([{ name: 'manager_id', referencedColumnName: 'employeeId' }])
+  Manager: Employee;
+}
+
+export class GetEmployee extends Employee {
+  @Type(() => Department)
+  Department: Department;
+
+  @Type(() => Job)
+  Job: Job;
+
+  @Type(() => Employee)
+  ManagedEmployees: Employee[];
+
+  @Type(() => Department)
+  ManagedDepartments: Department[];
+
+  @Type(() => Employee)
   Manager: Employee;
 }
