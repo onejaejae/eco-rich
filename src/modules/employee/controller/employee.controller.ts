@@ -1,13 +1,19 @@
-import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
-import { EmployeeService } from '../service/employee.service';
+import { Controller, Get, Inject, Param } from '@nestjs/common';
 import {
   GetEmployee,
   GetEmployeeJobHistory,
 } from 'src/entities/employee/employee.entity';
+import {
+  EmployeeServiceKey,
+  IEmployeeService,
+} from '../service/employee-service.interface';
 
 @Controller('employees')
 export class EmployeeController {
-  constructor(private readonly employeeService: EmployeeService) {}
+  constructor(
+    @Inject(EmployeeServiceKey)
+    private readonly employeeService: IEmployeeService,
+  ) {}
 
   @Get('/:employeeId')
   async getEmployee(

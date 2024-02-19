@@ -7,9 +7,10 @@ import {
   GetEmployee,
   GetEmployeeJobHistory,
 } from 'src/entities/employee/employee.entity';
+import { IEmployeeService } from './employee-service.interface';
 
 @Injectable()
-export class EmployeeService {
+export class EmployeeService implements IEmployeeService {
   constructor(
     @Inject(EmployeeRepositoryKey)
     private readonly employeeRepository: IEmployeeRepository,
