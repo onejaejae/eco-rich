@@ -13,10 +13,11 @@ export class TypeOrmModule {
       inject: [EcoConfigService],
       useFactory: async (configService: EcoConfigService) => {
         const dbConfig = configService.getDBConfig();
+        const appCongig = configService.getAppConfig();
 
         return {
           type: 'postgres',
-          //   host: dbConfig.DB_HOST,
+          host: appCongig.ENV === 'local' ? 'localhost' : dbConfig.DB_HOST,
           port: Number(dbConfig.DB_PORT),
           database: dbConfig.DB_DATABASE,
           username: dbConfig.DB_USER_NAME,
