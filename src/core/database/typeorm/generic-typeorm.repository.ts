@@ -8,9 +8,12 @@ import {
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { RootEntity } from './root.entity';
 import { TransactionManager } from './transaction.manager';
+import { GenericRepository } from '../generic/generic.repository';
 
 @Injectable()
-export abstract class GenericTypeOrmRepository<T extends RootEntity> {
+export abstract class GenericTypeOrmRepository<T extends RootEntity>
+  implements GenericRepository<T>
+{
   protected abstract readonly txManager: TransactionManager;
   constructor(private readonly classType: ClassConstructor<T>) {}
 
@@ -49,7 +52,7 @@ export abstract class GenericTypeOrmRepository<T extends RootEntity> {
   }
 
   async deleteById(id: number) {
-    return this.getRepository().softDelete(id);
+    await this.getRepository().softDelete(id);
   }
 
   protected getRepository(): Repository<T> {
