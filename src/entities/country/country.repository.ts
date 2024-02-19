@@ -3,9 +3,13 @@ import { GenericTypeOrmRepository } from 'src/core/database/typeorm/generic-type
 import { Injectable } from '@nestjs/common';
 import { TransactionManager } from 'src/core/database/typeorm/transaction.manager';
 import { Country } from './country.entity';
+import { ICountryRepository } from './country-repository.interface';
 
 @Injectable()
-export class CountryRepository extends GenericTypeOrmRepository<Country> {
+export class CountryRepository
+  extends GenericTypeOrmRepository<Country>
+  implements ICountryRepository
+{
   constructor(protected readonly txManager: TransactionManager) {
     super(Country);
   }
