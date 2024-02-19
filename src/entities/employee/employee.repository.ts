@@ -8,9 +8,13 @@ import {
   GetEmployeeJobHistory,
 } from './employee.entity';
 import { TransformPlainToInstance } from 'class-transformer';
+import { IEmployeeRepository } from './employee-repository.interface';
 
 @Injectable()
-export class EmployeeRepository extends GenericTypeOrmRepository<Employee> {
+export class EmployeeRepository
+  extends GenericTypeOrmRepository<Employee>
+  implements IEmployeeRepository
+{
   constructor(protected readonly txManager: TransactionManager) {
     super(Employee);
   }
