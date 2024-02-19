@@ -17,5 +17,8 @@ export const configurations = (): Configurations => {
       DB_DATABASE: process.env.DB_DATABASE,
       DB_PORT: process.env.DB_PORT || 5432,
     },
+    OPEN_API: {
+      OPEN_API_ACCESS_KEY: process.env.OPEN_API_ACCESS_KEY,
+    },
   };
 };

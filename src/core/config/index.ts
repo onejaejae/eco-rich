@@ -13,7 +13,12 @@ export interface DBConfig {
   DB_PORT: number | string;
 }
 
+export interface OpenAPiConfig {
+  OPEN_API_ACCESS_KEY: string;
+}
+
 export interface Configurations {
   APP: AppConfig;
   DB: DBConfig;
+  OPEN_API: OpenAPiConfig;
 }

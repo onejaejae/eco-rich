@@ -7,6 +7,7 @@ import { JobModule } from './modules/job/job.module';
 import { JobHistoryModule } from './modules/job-history/job-history.module';
 import { LocationModule } from './modules/location/location.module';
 import { RegionModule } from './modules/region/region.module';
+import { BusModule } from './modules/bus/bus.module';
 
 const applicationModules = [
   CountryModule,
@@ -16,6 +17,7 @@ const applicationModules = [
   JobHistoryModule,
   LocationModule,
   RegionModule,
+  BusModule,
 ];
 
 @Module({

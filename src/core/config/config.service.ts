@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AppConfig, Configurations, DBConfig } from '.';
+import { AppConfig, Configurations, DBConfig, OpenAPiConfig } from '.';
 
 @Injectable()
 export class EcoConfigService {
@@ -12,5 +12,9 @@ export class EcoConfigService {
 
   getDBConfig(): DBConfig {
     return this.configService.getOrThrow('DB');
+  }
+
+  getOpenApiConfig(): OpenAPiConfig {
+    return this.configService.getOrThrow('OPEN_API');
   }
 }
