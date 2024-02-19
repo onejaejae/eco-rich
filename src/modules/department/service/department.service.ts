@@ -4,13 +4,16 @@ import {
   DepartmentRepositoryKey,
   IDepartmentRepository,
 } from 'src/entities/department/department-repository.interface';
+import { Department } from 'src/entities/department/department.entity';
 import {
   EmployeeRepositoryKey,
   IEmployeeRepository,
 } from 'src/entities/employee/employee-repository.interface';
+import { Employee } from 'src/entities/employee/employee.entity';
+import { IDepartmentService } from './department-service.interface';
 
 @Injectable()
-export class DepartmentService {
+export class DepartmentService implements IDepartmentService {
   constructor(
     @Inject(DepartmentRepositoryKey)
     private readonly departmentRepository: IDepartmentRepository,
@@ -18,7 +21,7 @@ export class DepartmentService {
     private readonly employeeRepository: IEmployeeRepository,
   ) {}
 
-  async getDepartmentDetail(departmentId: number) {
+  async getDepartmentDetail(departmentId: number): Promise<Department> {
     await this.departmentRepository.findOneOrThrow({
       departmentId,
     });
@@ -28,7 +31,7 @@ export class DepartmentService {
   async updateDepartmentSalary(
     departmentId: number,
     updateDepartmentSalaryDto: UpdateDepartmentSalaryDto,
-  ) {
+  ): Promise<Employee[]> {
     const { increaseRate } = updateDepartmentSalaryDto;
 
     await this.departmentRepository.findOneOrThrow({

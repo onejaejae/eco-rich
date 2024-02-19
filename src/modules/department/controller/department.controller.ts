@@ -1,10 +1,16 @@
-import { Body, Controller, Get, Param, Patch, Post, Req } from '@nestjs/common';
-import { DepartmentService } from '../service/department.service';
+import { Body, Controller, Get, Inject, Param, Patch } from '@nestjs/common';
 import { UpdateDepartmentSalaryDto } from 'src/common/request/department/update-department-salary.dto';
+import {
+  DepartmentServiceKey,
+  IDepartmentService,
+} from '../service/department-service.interface';
 
 @Controller('departments')
 export class DepartmentController {
-  constructor(private readonly departmentService: DepartmentService) {}
+  constructor(
+    @Inject(DepartmentServiceKey)
+    private readonly departmentService: IDepartmentService,
+  ) {}
 
   @Get('/:departmentId')
   getDepartmentDetail(@Param('departmentId') departmentId: number) {
