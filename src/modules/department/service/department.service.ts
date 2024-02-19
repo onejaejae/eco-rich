@@ -1,12 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { UpdateDepartmentSalaryDto } from 'src/common/request/department/update-department-salary.dto';
-import { DepartmentRepository } from 'src/entities/department/department.repository';
+import {
+  DepartmentRepositoryKey,
+  IDepartmentRepository,
+} from 'src/entities/department/department-repository.interface';
 import { EmployeeRepository } from 'src/entities/employee/employee.repository';
 
 @Injectable()
 export class DepartmentService {
   constructor(
-    private readonly departmentRepository: DepartmentRepository,
+    @Inject(DepartmentRepositoryKey)
+    private readonly departmentRepository: IDepartmentRepository,
     private readonly employeeRepository: EmployeeRepository,
   ) {}
 

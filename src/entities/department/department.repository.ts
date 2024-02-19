@@ -14,7 +14,7 @@ export class DepartmentRepository extends GenericTypeOrmRepository<Department> {
     return Department.name;
   }
 
-  async getDepartmentDetail(departmentId: number): Promise<any> {
+  async getDepartmentDetail(departmentId: number): Promise<Department> {
     return this.getRepository().findOne({
       where: { departmentId },
       relations: ['Location', 'Location.Country', 'Location.Country.Region'],
