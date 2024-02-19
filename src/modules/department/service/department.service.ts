@@ -4,14 +4,18 @@ import {
   DepartmentRepositoryKey,
   IDepartmentRepository,
 } from 'src/entities/department/department-repository.interface';
-import { EmployeeRepository } from 'src/entities/employee/employee.repository';
+import {
+  EmployeeRepositoryKey,
+  IEmployeeRepository,
+} from 'src/entities/employee/employee-repository.interface';
 
 @Injectable()
 export class DepartmentService {
   constructor(
     @Inject(DepartmentRepositoryKey)
     private readonly departmentRepository: IDepartmentRepository,
-    private readonly employeeRepository: EmployeeRepository,
+    @Inject(EmployeeRepositoryKey)
+    private readonly employeeRepository: IEmployeeRepository,
   ) {}
 
   async getDepartmentDetail(departmentId: number) {

@@ -1,13 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+  EmployeeRepositoryKey,
+  IEmployeeRepository,
+} from 'src/entities/employee/employee-repository.interface';
 import {
   GetEmployee,
   GetEmployeeJobHistory,
 } from 'src/entities/employee/employee.entity';
-import { EmployeeRepository } from 'src/entities/employee/employee.repository';
 
 @Injectable()
 export class EmployeeService {
-  constructor(private readonly employeeRepository: EmployeeRepository) {}
+  constructor(
+    @Inject(EmployeeRepositoryKey)
+    private readonly employeeRepository: IEmployeeRepository,
+  ) {}
 
   async getEmployee(employeeId: number): Promise<GetEmployee> {
     await this.employeeRepository.findOneOrThrow({ employeeId });

@@ -1,8 +1,13 @@
-import { Module } from '@nestjs/common';
+import { ClassProvider, Module } from '@nestjs/common';
 import { EmployeeRepository } from './employee.repository';
+import { EmployeeRepositoryKey } from './employee-repository.interface';
 
+export const employeeRepository: ClassProvider = {
+  provide: EmployeeRepositoryKey,
+  useClass: EmployeeRepository,
+};
 @Module({
-  providers: [EmployeeRepository],
-  exports: [EmployeeRepository],
+  providers: [employeeRepository],
+  exports: [employeeRepository],
 })
 export class EmployeeRepositoryModule {}
