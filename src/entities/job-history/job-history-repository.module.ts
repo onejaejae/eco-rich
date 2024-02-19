@@ -1,8 +1,14 @@
-import { Module } from '@nestjs/common';
+import { ClassProvider, Module } from '@nestjs/common';
 import { JobHistoryRepository } from './job-history.repository';
+import { JobHistoryRepositoryKey } from './job-history-repository.interface';
+
+export const jobHistoryRepository: ClassProvider = {
+  provide: JobHistoryRepositoryKey,
+  useClass: JobHistoryRepository,
+};
 
 @Module({
-  providers: [JobHistoryRepository],
-  exports: [JobHistoryRepository],
+  providers: [jobHistoryRepository],
+  exports: [jobHistoryRepository],
 })
 export class JobHistoryRepositoryModule {}
