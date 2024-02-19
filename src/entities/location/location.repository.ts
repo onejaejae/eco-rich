@@ -3,9 +3,13 @@ import { GenericTypeOrmRepository } from 'src/core/database/typeorm/generic-type
 import { Injectable } from '@nestjs/common';
 import { TransactionManager } from 'src/core/database/typeorm/transaction.manager';
 import { Location } from './location.entity';
+import { ILocationRepository } from './location-repository.interface';
 
 @Injectable()
-export class LocationRepository extends GenericTypeOrmRepository<Location> {
+export class LocationRepository
+  extends GenericTypeOrmRepository<Location>
+  implements ILocationRepository
+{
   constructor(protected readonly txManager: TransactionManager) {
     super(Location);
   }
