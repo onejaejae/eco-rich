@@ -15,6 +15,8 @@ export class TypeOrmModule {
         const dbConfig = configService.getDBConfig();
         const appCongig = configService.getAppConfig();
 
+        console.log('dbConfig', dbConfig);
+
         return {
           type: 'postgres',
           host: appCongig.ENV === 'local' ? 'localhost' : dbConfig.DB_HOST,
