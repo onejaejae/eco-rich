@@ -23,7 +23,7 @@ export class TypeOrmModule {
           password: dbConfig.DB_PASSWORD,
           synchronize: false,
           entities: [entityPath],
-          logging: true,
+          logging: false,
           namingStrategy: new SnakeNamingStrategy(),
           extra: {
             max: 10,

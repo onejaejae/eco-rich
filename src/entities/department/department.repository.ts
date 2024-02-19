@@ -20,4 +20,11 @@ export class DepartmentRepository extends GenericTypeOrmRepository<Department> {
       relations: ['Location', 'Location.Country', 'Location.Country.Region'],
     });
   }
+
+  async getDepartmentWithEmployees(departmentId: number): Promise<Department> {
+    return this.getRepository().findOne({
+      where: { departmentId },
+      relations: ['Employees'],
+    });
+  }
 }

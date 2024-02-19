@@ -14,6 +14,7 @@ import {
 import { BaseTimeEntity } from 'src/core/database/typeorm/baseTime.entity';
 import { Job } from '../job/job.entity';
 import { Type } from 'class-transformer';
+import { BadRequestException } from '@nestjs/common';
 
 @Entity('employees')
 export class Employee extends BaseTimeEntity {
@@ -70,6 +71,15 @@ export class Employee extends BaseTimeEntity {
   @ManyToOne(() => Employee, (manager) => manager.ManagedEmployees)
   @JoinColumn([{ name: 'manager_id', referencedColumnName: 'employeeId' }])
   Manager: Employee;
+
+  updateSalary(increaseRate: number) {
+    if (increaseRate <= 0)
+      throw new BadRequestException(
+        `increaseRate: ${increaseRate}는 양수여야 합니다.`,
+      );
+
+    this.salary *= 1 + increaseRate;
+  }
 }
 
 export class GetEmployee extends Employee {
