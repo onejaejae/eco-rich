@@ -15,7 +15,7 @@ export class TypeOrmModule {
         const dbConfig = configService.getDBConfig();
         const appCongig = configService.getAppConfig();
 
-        console.log('dbConfig', dbConfig);
+        console.log('dbConfig22', dbConfig);
 
         return {
           type: 'postgres',
