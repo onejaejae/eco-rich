@@ -6,9 +6,7 @@ export class BusController {
   constructor(private readonly busService: BusService) {}
 
   @Get('/:busId')
-  async getBus(@Param('busId') busId: number) {
-    console.log('busId', busId);
-
-    return this.busService.getBus(busId);
+  async getBus(@Param('strSrch') strSrch: number) {
+    return this.busService.getBus(strSrch);
   }
 }

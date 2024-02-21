@@ -9,14 +9,14 @@ export class BusService {
     private readonly httpService: HttpService,
   ) {}
 
-  private generateURL(busId: number) {
+  private generateURL(strSrch: number) {
     const openApiConfig = this.configService.getOpenApiConfig();
 
-    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?busRouteId=${busId}&serviceKey=${openApiConfig.OPEN_API_ACCESS_KEY}`;
+    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?strSrch=${strSrch}&serviceKey=${openApiConfig.OPEN_API_ACCESS_KEY}`;
   }
 
-  async getBus(busId: number) {
-    const url = this.generateURL(busId);
+  async getBus(strSrch: number) {
+    const url = this.generateURL(strSrch);
 
     const { data } = await this.httpService.axiosRef.get(url);
     console.log('data', data);

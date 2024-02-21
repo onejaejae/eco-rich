@@ -14,7 +14,7 @@ async function bootstrap() {
   setNestApp(app);
 
   await app.listen(appConfig.PORT);
-  Logger.log(`😇 [ECO&RICH -API][${appConfig.ENV}] Started at: ${Date.now()}`);
+  Logger.log(`😇 [ECO&RICH-API][${appConfig.ENV}] Started at: ${Date.now()}`);
   Logger.log(`🚀 Server open at ${appConfig.BASE_URL}:${appConfig.PORT}`);
 }
 bootstrap();
