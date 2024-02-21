@@ -10,15 +10,15 @@ export class BusService {
   ) {}
 
   private generateURL(strSrch: number) {
-    const openApiConfig = this.configService.getOpenApiConfig();
-
-    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?strSrch=${strSrch}&serviceKey=${openApiConfig.OPEN_API_ACCESS_KEY}`;
+    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?strSrch=${strSrch}&serviceKey=${process.env.OPEN_API_ACCESS_KEY}&resultType=json `;
   }
 
   async getBus(strSrch: number) {
     const url = this.generateURL(strSrch);
 
-    const { data } = await this.httpService.axiosRef.get(url);
-    console.log('data', data);
+    const {
+      data: { msgBody },
+    } = await this.httpService.axiosRef.get(url);
+    return msgBody;
   }
 }

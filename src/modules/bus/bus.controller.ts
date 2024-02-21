@@ -5,7 +5,7 @@ import { BusService } from './bus.service';
 export class BusController {
   constructor(private readonly busService: BusService) {}
 
-  @Get('/:busId')
+  @Get('/:strSrch')
   async getBus(@Param('strSrch') strSrch: number) {
     return this.busService.getBus(strSrch);
   }
