@@ -11,19 +11,19 @@ ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com
 
 #### Employee
 
-특정 사원의 현재 정보 조회 가능한 API API (GET https://eco-rich-app-env.eba-wmkxihnw.eu-north-1.elasticbeanstalk.com/api/employees/:employeeId)
+- 특정 사원의 현재 정보 조회 가능한 API API (GET https://eco-rich-app-env.eba-wmkxihnw.eu-north-1.elasticbeanstalk.com/api/employees/:employeeId)
 
-특정 사원의 이력 정보 조회 가능한 API (GET http://localhost:3000/api/employees/:employeeId/job-history)
+- 특정 사원의 이력 정보 조회 가능한 API (GET ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com/api/employees/:employeeId/job-history)
 
 #### Department
 
-부서 및 위치 정보 조회 가능한 API (GET http://localhost:3000/api/departments/:departmentId)
+- 부서 및 위치 정보 조회 가능한 API (GET ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com/api/departments/:departmentId)
 
-특정 부서의 급여를 특정 비율로 인상 및 사원 정보 업데이트 할 수 있는 API (PATCH http://localhost:3000/api/departments/:departmentId/salary)
+- 특정 부서의 급여를 특정 비율로 인상 및 사원 정보 업데이트 할 수 있는 API (PATCH ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com/api/departments/:departmentId/salary)
 
 #### Bus
 
-공공 데이터 포털의 버스 정보 API 조회 (GET http://localhost:3000/api/bus/:strSrch)
+- 공공 데이터 포털의 버스 정보 API 조회 (GET ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com/api/bus/:strSrch)
 
 <br>
 
