@@ -11,6 +11,13 @@ services:
       - db
     env_file:
       - .env
+    command:
+      - /bin/sh
+      - -c
+      - |
+        yarn seed:run
+        yarn start:dev
+
   db:
     image: postgres:15
     ports:

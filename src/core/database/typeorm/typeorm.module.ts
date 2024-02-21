@@ -15,8 +15,6 @@ export class TypeOrmModule {
         const dbConfig = configService.getDBConfig();
         const appCongig = configService.getAppConfig();
 
-        console.log('OPEN_API_ACCESS_KEY', process.env.OPEN_API_ACCESS_KEY);
-
         return {
           type: 'postgres',
           host: appCongig.ENV === 'local' ? 'localhost' : dbConfig.DB_HOST,

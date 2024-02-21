@@ -33,5 +33,5 @@ jobs:
           version_description: ${{ github.event.head_commit.message }}
           region: eu-north-1
           deployment_package: ${{ github.sha }}.zip
-          wait_for_environment_recovery: 60
+          wait_for_environment_recovery: 180
           use_existing_version_if_available: true

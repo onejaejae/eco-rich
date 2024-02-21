@@ -9,13 +9,14 @@ const entityPath = path.join(__dirname + '/src/entities/*/*.entity.ts');
 
 const options: DataSourceOptions & SeederOptions = {
   type: 'postgres',
+  host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.DB_USER_NAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   entities: [entityPath],
   migrations: ['./src/migrations/*.ts'],
-  synchronize: false,
+  synchronize: true,
   logging: true,
   namingStrategy: new SnakeNamingStrategy(),
   seeds: ['./src/core/database/typeorm/seeds/**/*{.ts,.js}'],

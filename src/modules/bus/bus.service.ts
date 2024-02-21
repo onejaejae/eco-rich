@@ -10,7 +10,7 @@ export class BusService {
   ) {}
 
   private generateURL(strSrch: number) {
-    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?strSrch=${strSrch}&serviceKey=${process.env.OPEN_API_ACCESS_KEY}&resultType=json `;
+    return `http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?strSrch=${strSrch}&serviceKey=${process.env.OPEN_API_ACCESS_KEY}&resultType=json`;
   }
 
   async getBus(strSrch: number) {
