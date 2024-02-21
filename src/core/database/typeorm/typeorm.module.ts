@@ -15,7 +15,7 @@ export class TypeOrmModule {
         const dbConfig = configService.getDBConfig();
         const appCongig = configService.getAppConfig();
 
-        console.log('dbConfig20', dbConfig);
+        console.log('dbConfig21', dbConfig);
         console.log('DB_USER_NAME', process.env.DB_USER_NAME);
         console.log('OPEN_API_ACCESS_KEY', process.env.OPEN_API_ACCESS_KEY);
 
