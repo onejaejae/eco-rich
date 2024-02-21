@@ -27,6 +27,12 @@ ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com
 
 <br>
 
+## 배포 flow
+
+- CI/CD With Github Actions + Elastic BeanStalk + Docker + Docker-compose
+
+<br>
+
 ## Workflow 및 구현 패턴
 
 ### 공통 기능
