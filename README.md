@@ -1,7 +1,13 @@
 ## API
 
 API 명세 링크 (request, response type을 확인할 수 있습니다.)
-https://documenter.getpostman.com/view/13091019/2s9Yyv9f7t
+https://documenter.getpostman.com/view/13091019/2sA2r9XPjC
+
+#### 호스팅 URL
+
+```
+ECO-RICH-APP-env.eba-yywxpr8x.eu-north-1.elasticbeanstalk.com
+```
 
 #### Employee
 
