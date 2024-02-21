@@ -19,12 +19,6 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
 
-      - name: Login to Docker hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_ID }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
       - name: Generate deployment package
         run: zip -r ${{ github.sha }}.zip . -x "*.git*" node_modules
 
@@ -39,3 +33,5 @@ jobs:
           version_description: ${{ github.event.head_commit.message }}
           region: eu-north-1
           deployment_package: ${{ github.sha }}.zip
+          wait_for_environment_recovery: 60
+          use_existing_version_if_available: true
